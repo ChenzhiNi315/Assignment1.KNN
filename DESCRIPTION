@@ -14,7 +14,7 @@ Imports:
     ggplot2,
     tidyr,
     rlang,
-    utils,
+    utils
 Suggests: 
     knitr,
     rmarkdown
