@@ -2,26 +2,25 @@ Package: Assignment1KNN
 Title: Functions for KNN Assignment 1
 Version: 0.1.0
 Authors@R: 
-    c(person(given = "Chenzhi",
-             family = "Ni",
-             email = "pinkmannicz@gmail.com",
-             role = c("aut", "cre")))
+    person("Chenzhi", "Ni", , "pinkmannicz@gmail.com", role = c("aut", "cre"))
 Description: Implements the functions required for Assignment 1 of the
     Machine Learning course, including data splitting, finding optimal k
     for KNN, and evaluating the model.
-License: MIT + file LICENSE  
-Encoding: UTF-8
-RoxygenNote: 7.3.3
-Imports:                  
-    kknn,
+License: MIT + file LICENSE
+Depends: 
+    R (>= 3.5)
+Imports: 
     ggplot2,
+    kknn,
+    rlang,
+    stats,
     tidyr,
-    rlang, 
-    stats
+    utils
 Suggests: 
     knitr,
     rmarkdown
-VignetteBuilder: knitr
-Depends: 
-    R (>= 3.5)
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.3.3
