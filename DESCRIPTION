@@ -10,12 +10,11 @@ License: MIT + file LICENSE
 Depends: 
     R (>= 3.5)
 Imports: 
-    ggplot2,
     kknn,
-    rlang,
-    stats,
+    ggplot2,
     tidyr,
-    utils
+    rlang,
+    utils,
 Suggests: 
     knitr,
     rmarkdown
