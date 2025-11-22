@@ -1,5 +1,6 @@
 # R/knn_assignment_functions.R
 
+utils::globalVariables(c("y"))
 #' Split the Optdigits Dataset
 #' (Task 1)
 #'
