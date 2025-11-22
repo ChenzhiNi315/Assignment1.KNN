@@ -1,10 +1,10 @@
-# Assignment1KNN
+# Assignment1.KNN
 
 [![R-CMD-check](https://github.com/ChenzhiNi315/Assignment1.KNN/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ChenzhiNi315/Assignment1.KNN/actions/workflows/R-CMD-check.yaml)
 
 ## Description
 
-**Assignment1KNN** is an R package developed for the Machine Learning course assignment. It implements a K-Nearest Neighbors (KNN) classifier to recognize handwritten digits using the `optdigits` dataset (from the UCI Machine Learning Repository).
+**Assignment1.KNN** is an R package developed for the Machine Learning course assignment. It implements a K-Nearest Neighbors (KNN) classifier to recognize handwritten digits using the `optdigits` dataset (from the UCI Machine Learning Repository).
 
 This package allows you to:
 * Split data into training, validation, and test sets.
