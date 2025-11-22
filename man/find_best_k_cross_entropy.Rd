@@ -3,21 +3,21 @@
 \name{find_best_k_cross_entropy}
 \alias{find_best_k_cross_entropy}
 \title{Find Optimal K (Cross-Entropy)
-(Fulfills Task 5)}
+(Task 5)}
 \usage{
 find_best_k_cross_entropy(train_data, valid_data, k_values = 1:30)
 }
 \arguments{
-\item{train_data}{The training dataset.}
+\item{train_data}{Training data.}
 
-\item{valid_data}{The validation dataset.}
+\item{valid_data}{Validation data.}
 
-\item{k_values}{An integer vector.}
+\item{k_values}{Vector of K values.}
 }
 \value{
-A list containing \code{results_df} and \code{best_k}.
+List with results data frame and best K.
 }
 \description{
 Find Optimal K (Cross-Entropy)
-(Fulfills Task 5)
+(Task 5)
 }

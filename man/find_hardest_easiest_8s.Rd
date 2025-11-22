@@ -3,19 +3,19 @@
 \name{find_hardest_easiest_8s}
 \alias{find_hardest_easiest_8s}
 \title{Find Hardest and Easiest Digit Examples
-(Fulfills Task 3)}
+(Task 3)}
 \usage{
-find_hardest_easiest_8s(train_data, best_k)
+find_hardest_easiest_8s(train_data, k = 30)
 }
 \arguments{
-\item{train_data}{The training dataset.}
+\item{train_data}{Training data.}
 
-\item{best_k}{The optimal K value (from Task 4).}
+\item{k}{Number of neighbors (default 30).}
 }
 \value{
-A list containing \code{hardest} (3 examples) and \code{easiest} (2 examples).
+List with hardest (3) and easiest (2) examples.
 }
 \description{
 Find Hardest and Easiest Digit Examples
-(Fulfills Task 3)
+(Task 3)
 }

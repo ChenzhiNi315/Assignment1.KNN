@@ -3,19 +3,19 @@
 \name{evaluate_k_30}
 \alias{evaluate_k_30}
 \title{Evaluate a K=30 Classifier
-(Fulfills Task 2)}
+(Task 2)}
 \usage{
 evaluate_k_30(train_data, test_data)
 }
 \arguments{
-\item{train_data}{The training dataset.}
+\item{train_data}{Training data.}
 
-\item{test_data}{The test dataset.}
+\item{test_data}{Test data.}
 }
 \value{
-A list containing confusion matrices and error rates.
+List of confusion matrices and errors.
 }
 \description{
 Evaluate a K=30 Classifier
-(Fulfills Task 2)
+(Task 2)
 }

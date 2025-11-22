@@ -3,19 +3,19 @@
 \name{split_optdigits_data}
 \alias{split_optdigits_data}
 \title{Split the Optdigits Dataset
-(Fulfills Task 1)}
+(Task 1)}
 \usage{
 split_optdigits_data(data, seed = 12345)
 }
 \arguments{
-\item{data}{The complete data frame.}
+\item{data}{Data frame.}
 
-\item{seed}{A random seed.}
+\item{seed}{Random seed.}
 }
 \value{
-A list containing train_data, valid_data, and test_data.
+List with train, valid, and test sets.
 }
 \description{
 Split the Optdigits Dataset
-(Fulfills Task 1)
+(Task 1)
 }

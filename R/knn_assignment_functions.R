@@ -64,6 +64,7 @@ evaluate_k_30 <- function(train_data, test_data) {
 #' @param k Number of neighbors (default 30).
 #' @return List with hardest (3) and easiest (2) examples.
 #' @importFrom kknn kknn
+#' @importFrom utils head tail
 #' @export
 find_hardest_easiest_8s <- function(train_data, k = 30) {
   indices_8 <- which(train_data$Digit == "8")
@@ -100,7 +101,7 @@ find_hardest_easiest_8s <- function(train_data, k = 30) {
 #' @return ggplot object.
 #' @importFrom tidyr pivot_longer
 #' @importFrom rlang .data
-#' @importFrom ggplot2 ggplot aes geom_tile scale_fill_gradient scale_y_reverse labs theme_void coord_fixed theme element_text
+#' @importFrom ggplot2 ggplot aes geom_tile scale_fill_gradientn scale_y_reverse labs theme_void coord_fixed theme element_text
 #' @export
 plot_digit <- function(digit_row, title = "") {
   pixel_vector <- as.numeric(digit_row[1:64])

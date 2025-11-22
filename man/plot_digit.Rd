@@ -3,19 +3,19 @@
 \name{plot_digit}
 \alias{plot_digit}
 \title{Plot a Single Digit
-(Helper function for Task 3)}
+(Task 3 Helper)}
 \usage{
 plot_digit(digit_row, title = "")
 }
 \arguments{
-\item{digit_row}{A single row from the optdigits data frame.}
+\item{digit_row}{Single row from data.}
 
-\item{title}{A title for the plot.}
+\item{title}{Plot title.}
 }
 \value{
-A ggplot object.
+ggplot object.
 }
 \description{
 Plot a Single Digit
-(Helper function for Task 3)
+(Task 3 Helper)
 }

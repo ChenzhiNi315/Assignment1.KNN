@@ -3,19 +3,19 @@
 \name{plot_knn_errors}
 \alias{plot_knn_errors}
 \title{Plot KNN Misclassification Error Curve
-(Helper function for Task 4)}
+(Task 4 Helper)}
 \usage{
 plot_knn_errors(k_results_df, best_k)
 }
 \arguments{
-\item{k_results_df}{The data frame from \code{find_best_k_misclassification}.}
+\item{k_results_df}{Results data frame.}
 
-\item{best_k}{The optimal K value.}
+\item{best_k}{Optimal K value.}
 }
 \value{
-A ggplot object.
+ggplot object.
 }
 \description{
 Plot KNN Misclassification Error Curve
-(Helper function for Task 4)
+(Task 4 Helper)
 }

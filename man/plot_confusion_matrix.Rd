@@ -2,20 +2,20 @@
 % Please edit documentation in R/knn_assignment_functions.R
 \name{plot_confusion_matrix}
 \alias{plot_confusion_matrix}
-\title{Plot a Confusion Matrix Heatmap
-(Helper function for Task 2)}
+\title{Plot Confusion Matrix Heatmap
+(Task 2 Helper)}
 \usage{
 plot_confusion_matrix(cm, title = "Confusion Matrix")
 }
 \arguments{
-\item{cm}{A confusion matrix object (from \code{table()}).}
+\item{cm}{Confusion matrix.}
 
-\item{title}{A string for the plot subtitle.}
+\item{title}{Plot subtitle.}
 }
 \value{
-A ggplot object.
+ggplot object.
 }
 \description{
-Plot a Confusion Matrix Heatmap
-(Helper function for Task 2)
+Plot Confusion Matrix Heatmap
+(Task 2 Helper)
 }

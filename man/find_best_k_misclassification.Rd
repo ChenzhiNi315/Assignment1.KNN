@@ -3,21 +3,21 @@
 \name{find_best_k_misclassification}
 \alias{find_best_k_misclassification}
 \title{Find Optimal K (Misclassification)
-(Fulfills Task 4)}
+(Task 4)}
 \usage{
 find_best_k_misclassification(train_data, valid_data, k_values = 1:30)
 }
 \arguments{
-\item{train_data}{The training dataset.}
+\item{train_data}{Training data.}
 
-\item{valid_data}{The validation dataset.}
+\item{valid_data}{Validation data.}
 
-\item{k_values}{An integer vector.}
+\item{k_values}{Vector of K values.}
 }
 \value{
-A list containing \code{results_df} and \code{best_k}.
+List with results data frame and best K.
 }
 \description{
 Find Optimal K (Misclassification)
-(Fulfills Task 4)
+(Task 4)
 }
