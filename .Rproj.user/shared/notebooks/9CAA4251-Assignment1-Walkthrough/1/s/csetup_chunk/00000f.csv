@@ -1,0 +1,14 @@
+"0","library(Assignment1KNN)"
+"2","G3;
+载入程序包：‘Assignment1KNN’
+
+g"
+"2","G3;The following objects are masked _by_ ‘.GlobalEnv’:
+
+    evaluate_on_test_set, find_best_k, find_digit8_cases, plot_knn_errors,
+    split_optdigits_data
+
+g"
+"0","library(ggplot2) # Load ggplot2 to display plots"
+"2","G2;H2;警告h: 程序包‘ggplot2’是用R版本4.5.2 来建造的g
+"

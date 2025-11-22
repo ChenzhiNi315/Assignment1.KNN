@@ -1,0 +1,27 @@
+"0","# Call the evaluate_on_test_set function from your R/ folder"
+"0","final_evaluation <- evaluate_on_test_set("
+"0","  train_data = datasets$train_data, "
+"0","  test_data = datasets$test_data, "
+"0","  best_k = k_search$best_k"
+"0",")"
+"1","--- Final Test Set Evaluation (K = 3 ) ---
+Test Misclassification Rate: 0.02508 
+Test Accuracy: 0.97492 
+
+Test Confusion Matrix:
+      Predicted
+Actual   0   1   2   3   4   5   6   7   8   9
+     0  91   0   0   0   0   0   0   0   0   0
+     1   0  99   1   0   0   0   0   0   0   1
+     2   0   1  90   0   0   0   0   0   0   0
+     3   0   0   0  99   0   1   0   1   1   1
+     4   0   0   0   0 109   0   1   1   0   4
+     5   0   0   1   0   0  85   0   0   0   1
+     6   0   0   0   0   0   0  85   0   0   0
+     7   0   0   0   0   0   0   0 111   0   0
+     8   1   5   0   0   0   0   0   0  83   0
+     9   0   0   0   0   1   2   0   0   0  81
+-------------------------------------------
+"
+"0","# The function automatically prints the error rate and confusion matrix."
+"0","# We will access the 'final_evaluation' variable in the next step."

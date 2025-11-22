@@ -1,0 +1,5 @@
+"0","# Call our new function from the R/ folder"
+"0","examples_8 <- find_hardest_easiest_8s(train_data, best_k_misclass)"
+"0",""
+"0","# Plot the examples"
+"0","print(plot_digit(examples_8$hardest[1, ], title = ""Hardest 1 (Prob '8' = 0.0)""))"

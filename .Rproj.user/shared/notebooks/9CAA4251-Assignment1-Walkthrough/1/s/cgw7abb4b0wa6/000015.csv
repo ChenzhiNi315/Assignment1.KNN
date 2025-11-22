@@ -1,0 +1,2 @@
+"0","# Add a vertical line for the best K"
+"0","abline(v = best_k_ce, col = ""red"", lty = 2)"

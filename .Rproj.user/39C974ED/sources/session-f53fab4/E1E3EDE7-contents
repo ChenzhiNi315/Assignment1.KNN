@@ -1,0 +1,184 @@
+---
+title: "Assignment 1: KNN Walkthrough"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Assignment 1: KNN Walkthrough}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document walks through how to use the `Assignment1KNN` package to complete the handwritten digit recognition task 1-5.
+
+```{r setup}
+library(Assignment1KNN)
+library(ggplot2) # Load ggplot2 to display plots
+```
+
+## Task 1: Import and Split Data
+
+The `Assignment1KNN` package includes the `optdigits` dataset. We first load `split_optdigits_data()` and split it into training (50%), validation (25%), and test (25%) sets.
+
+```{r task1}
+# Load the data included in the package
+data(optdigits)
+
+# Split the data (using a reproducible seed)
+datasets <- split_optdigits_data(optdigits, seed = 12345)
+
+# Store datasets in easy-to-use variables
+train_data <- datasets$train_data
+valid_data <- datasets$valid_data
+test_data <- datasets$test_data 
+```
+
+---
+
+## Task 2: (Theory) The Meaning of K
+
+Fit a K=30 classifier (kernel="rectangular") to the training data and estimate:
+a) Confusion matrices (train and test) 
+b) Misclassification error rates (train and test) 
+c) Comment on the quality.
+
+```{r task2}
+# Call our function from the R/ folder
+k_30_results <- evaluate_k_30(train_data, test_data)
+
+# Print misclassification rates
+cat("--- Misclassification Rates (K=30) ---\n")
+cat(paste("Training Error:", round(k_30_results$error_train, 5), "\n"))
+cat(paste("Test Error:    ", round(k_30_results$error_test, 5), "\n\n"))
+
+# Plot confusion matrices
+cat("--- Confusion Matrices (K=30) ---\n")
+print(plot_confusion_matrix(k_30_results$cm_train, title = "Training Set (K=30)"))
+print(plot_confusion_matrix(k_30_results$cm_test, title = "Test Set (K=30)"))
+```
+
+### Commentary (Task 2c)
+
+The model with K=30 is a very simple (low complexity) model.
+
+- Training Error: The training error (r round(k_30_results$error_train, 3)) is low, but not zero. This is expected, as a simple model cannot perfectly "memorize" the training data.
+
+- Test Error: The test error (r round(k_30_results$error_test, 3)) is quite similar to the training error. This suggests the model is not overfitting.
+
+- Overall Quality: The model is "good" but likely underfitting the data, meaning it's too simple. Looking at the heatmaps, it makes several mistakes (e.g., confusing "9" and "7"). A more complex model (with a lower K) will likely perform better.
+---
+
+## Task 3: Find the Optimal K (and Validation Heatmaps)
+
+Find the 2 easiest and 3 hardest examples of the digit "8" in the training data (for the best K).
+
+Note: This task depends on the "best K", which we find in Task 4. We must run the analysis for Task 4 first to get this value.
+```{r task3}
+# This code runs the analysis for Task 4 to get 'best_k'
+k_search_misclass <- find_best_k_misclassification(train_data, valid_data)
+best_k_misclass <- k_search_misclass$best_k
+
+cat(paste("Note: The 'Best K' (from Task 4) is:", best_k_misclass, "\n"))
+```
+
+Now we can use `best_k_misclass` to find the hardest and easiest examples.
+```{r task3, fig.width=10, fig.height=7}
+# Call our new function from the R/ folder
+examples_8 <- find_hardest_easiest_8s(train_data, best_k_misclass)
+
+# Plot the examples
+print(plot_digit(examples_8$hardest[1, ], title = "Hardest 1 (Prob '8' = 0.0)"))
+print(plot_digit(examples_8$hardest[2, ], title = "Hardest 2 (Prob '8' = 0.0)"))
+print(plot_digit(examples_8$hardest[3, ], title = "Hardest 3 (Prob '8' = 0.333)"))
+
+print(plot_digit(examples_8$easiest[1, ], title = "Easiest 1 (Prob '8' = 1.0)"))
+print(plot_digit(examples_8$easiest[2, ], title = "Easiest 2 (Prob '8' = 1.0)"))
+```
+### Commentary (Task 3)
+
+The "hardest" examples (which the model predicted as "8" with 0% or 33% probability, even though K=3) look visually ambiguous. "Hardest 1" and "Hardest 2" look more like "0"s or "6"s than "8"s. The "easiest" examples are clearly and perfectly drawn "8"s, which the model classified with 100% confidence.
+
+---
+
+## Task 4: Find Optimal K (Misclassification)
+
+Plot the training and validation misclassification error rates for K=1..30.
+
+```{r task4}
+# We already ran the analysis in the chunk above ('task3-find-k-first').
+# Now we just plot the results.
+plot_knn_errors(k_search_misclass$results_df, best_k_misclass)
+```
+
+(Theory) K and Model Complexity
+Question: How does model complexity change when K increases, and how does this affect the error rates?Answer: This plot illustrates the bias-variance tradeoff:
+
+- When K is LOW (e.g., K=1): The model is highly complex (high variance, low bias). It is very flexible and overfits the training data, resulting in 0 training error but a high validation error.
+
+- When K is HIGH (e.g., K=30): The model is very simple (low variance, high bias). It is underfitting the data, resulting in higher errors on both training and validation sets because it's not flexible enough.
+
+- The Optimal K (K=`r best_k_misclass`): This is the "sweet spot" with the best balance, giving the lowest error on unseen (validation) data.
+
+(Evaluation) Final Test Error and Conclusion
+Question: Report the test error rate for the optimal K and compare all three error rates.
+
+```{r task4}
+# 1. Get the error rates from our 'k_search_misclass' object
+train_error_best_k <- k_search_misclass$results_df$train_error[best_k_misclass]
+valid_error_best_k <- k_search_misclass$results_df$valid_error[best_k_misclass]
+
+# 2. Calculate the Test Error using the optimal K
+final_model <- kknn::kknn(Digit ~ ., train_data, test_data, k = best_k_misclass, kernel = "rectangular")
+pred_test <- stats::fitted(final_model)
+test_error_best_k <- sum(pred_test != test_data$Digit) / nrow(test_data)
+
+# 3. Print comparison
+cat(paste("--- Error Rates for Optimal K (K=", best_k_misclass, ") ---\n"))
+cat(paste("Training Error:  ", round(train_error_best_k, 5), "\n"))
+cat(paste("Validation Error:", round(valid_error_best_k, 5), "\n"))
+cat(paste("Test Error:      ", round(test_error_best_k, 5), "\n"))
+```
+
+Conclusion: The Training Error is very low (`r round(train_error_best_k, 3)`), which is expected. The Validation Error (`r round(valid_error_best_k, 3)`) and Test Error (`r round(test_error_best_k, 3)`) are extremely close to each other. This is an excellent sign! It means our validation set was a good proxy for real-world data, and our choice of `K=r best_k_misclass` was not a fluke. The final model quality is very high, with an accuracy of `r round((1-test_error_best_k)*100, 2)%` on the test set.
+---
+
+## Task 5: Find Optimal K (Cross-Entropy)
+
+Fit KNN for K=1..30 and plot the cross-entropy error on the validation data.
+
+```{r task5}
+# Call our new function from the R/ folder
+k_search_ce <- find_best_k_cross_entropy(train_data, valid_data)
+best_k_ce <- k_search_ce$best_k
+
+cat(paste("The best K using Cross-Entropy is:", best_k_ce, "\n"))
+
+# Plot the results
+plot(k_search_ce$results_df$K, 
+     k_search_ce$results_df$valid_cross_entropy,
+     type = "b", # "b" means both points and lines
+     xlab = "K (Number of Neighbors)",
+     ylab = "Cross-Entropy Error",
+     main = "Cross-Entropy Error vs. K (Validation Set)",
+     col = "blue",
+     lwd = 2)
+# Add a vertical line for the best K
+abline(v = best_k_ce, col = "red", lty = 2)
+```
+
+(Theory) Why is Cross-Entropy a more suitable error function?
+
+Answer: Misclassification error (Task 4) is an "all-or-nothing" metric. If the model predicts "8" with 51% probability (and "3" with 49%), it gets the answer "right" – exactly the same as if it had predicted "8" with 100% probability.
+
+Cross-entropy is a "softer" metric that measures how confident the model is in its predictions.
+
+- It heavily penalizes the model for being confidently wrong (e.g., predicting "3" with 90% probability when the answer was "8").
+
+- It rewards the model for being confidently right (predicting "8" with 90% probability).
+
+For classification, we don't just want the correct answer; we want a model that knows the correct answer with high probability. Cross-entropy measures this "confidence," making it a more sensitive and appropriate error function for training a probabilistic classifier.

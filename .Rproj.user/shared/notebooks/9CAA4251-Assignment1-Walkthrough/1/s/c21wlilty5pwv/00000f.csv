@@ -1,0 +1,22 @@
+"0","# 1. Get the error rates from our 'k_search_misclass' object"
+"0","train_error_best_k <- k_search_misclass$results_df$train_error[best_k_misclass]"
+"0","valid_error_best_k <- k_search_misclass$results_df$valid_error[best_k_misclass]"
+"0",""
+"0","# 2. Calculate the Test Error using the optimal K"
+"0","final_model <- kknn::kknn(Digit ~ ., train_data, test_data, k = best_k_misclass, kernel = ""rectangular"")"
+"0","pred_test <- stats::fitted(final_model)"
+"0","test_error_best_k <- sum(pred_test != test_data$Digit) / nrow(test_data)"
+"0",""
+"0","# 3. Print comparison"
+"0","cat(paste(""--- Error Rates for Optimal K (K="", best_k_misclass, "") ---\n""))"
+"1","--- Error Rates for Optimal K (K= 3 ) ---
+"
+"0","cat(paste(""Training Error:  "", round(train_error_best_k, 5), ""\n""))"
+"1","Training Error:   0.01151 
+"
+"0","cat(paste(""Validation Error:"", round(valid_error_best_k, 5), ""\n""))"
+"1","Validation Error: 0.02408 
+"
+"0","cat(paste(""Test Error:      "", round(test_error_best_k, 5), ""\n""))"
+"1","Test Error:       0.02508 
+"

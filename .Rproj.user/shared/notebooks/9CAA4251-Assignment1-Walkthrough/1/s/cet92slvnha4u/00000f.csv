@@ -1,0 +1,19 @@
+"0","# Call our function from the R/ folder"
+"0","k_30_results <- evaluate_k_30(train_data, test_data)"
+"0",""
+"0","# Print misclassification rates"
+"0","cat(""--- Misclassification Rates (K=30) ---\n"")"
+"1","--- Misclassification Rates (K=30) ---
+"
+"0","cat(paste(""Training Error:"", round(k_30_results$error_train, 5), ""\n""))"
+"1","Training Error: 0.045 
+"
+"0","cat(paste(""Test Error:    "", round(k_30_results$error_test, 5), ""\n\n""))"
+"1","Test Error:     0.04284 
+
+"
+"0","# Plot confusion matrices"
+"0","cat(""--- Confusion Matrices (K=30) ---\n"")"
+"1","--- Confusion Matrices (K=30) ---
+"
+"0","print(plot_confusion_matrix(k_30_results$cm_train, title = ""Training Set (K=30)""))"

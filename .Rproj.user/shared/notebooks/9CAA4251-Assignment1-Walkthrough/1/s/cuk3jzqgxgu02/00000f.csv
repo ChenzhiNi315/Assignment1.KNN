@@ -1,0 +1,6 @@
+"0","# 1. Extract the confusion matrix from the 'final_evaluation' list"
+"0","#    (this variable was created in the 'task5' chunk)"
+"0","my_matrix <- final_evaluation$confusion_matrix"
+"0",""
+"0","# 2. Plot the heatmap using our package function"
+"0","print(plot_confusion_matrix(my_matrix, title = ""Test Set""))"

@@ -1,0 +1,7 @@
+"0","# This code runs the analysis for Task 4 to get 'best_k'"
+"0","k_search_misclass <- find_best_k_misclassification(train_data, valid_data)"
+"0","best_k_misclass <- k_search_misclass$best_k"
+"0",""
+"0","cat(paste(""Note: The 'Best K' (from Task 4) is:"", best_k_misclass, ""\n""))"
+"1","Note: The 'Best K' (from Task 4) is: 3 
+"

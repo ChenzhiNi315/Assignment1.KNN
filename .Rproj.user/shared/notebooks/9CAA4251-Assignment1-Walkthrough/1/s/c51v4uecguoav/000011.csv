@@ -1,0 +1,4 @@
+"0",""
+"0","# --- 5. Plot Heatmap for VALIDATION data ---"
+"0","# (This calls the new function from yourVignetteBuilder: knitr package)"
+"0","print(plot_confusion_matrix(cm_valid, title = ""Validation Set""))"

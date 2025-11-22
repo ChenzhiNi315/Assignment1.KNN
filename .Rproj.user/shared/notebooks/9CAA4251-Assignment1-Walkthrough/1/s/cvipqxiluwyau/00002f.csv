@@ -1,0 +1,2 @@
+"0",""
+"0","print(plot_digit(examples_8$easiest[1, ], title = ""Easiest 1 (Prob '8' = 1.0)""))"

@@ -1,0 +1,12 @@
+"0","# Find the best K"
+"0","k_search <- find_best_k(datasets$train_data, datasets$valid_data)"
+"1","--- Finding Optimal K --- 
+Based on lowest validation error, Best K = 1 
+
+"
+"0","# Print the best K"
+"0","print(paste(""The best K found was:"", k_search$best_k))"
+"1","[1] ""The best K found was: 1""
+"
+"0","# Plot the error rate curve"
+"0","plot_knn_errors(k_search$results_df, k_search$best_k)"

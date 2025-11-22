@@ -1,0 +1,15 @@
+"0","# Load the data included in the package"
+"0","data(optdigits)"
+"0",""
+"0","# Split the data (using a reproducible seed)"
+"0","# This calls the split_optdigits_data function from your R/ folder"
+"0","datasets <- split_optdigits_data(optdigits, seed = 12345)"
+"1","--- Data Splitting Results ---
+Training set size: 1911 
+Validation set size: 955 
+Test set size: 957 
+------------------------------
+
+"
+"0","# View the structure of the training data"
+"0","# str(datasets$train_data) "
